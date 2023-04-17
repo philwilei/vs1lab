@@ -143,6 +143,7 @@ header > * {
 main {
     display: flex;
     padding: 2em;
+    flex-grow: 1;
 }
 
 section {
@@ -228,6 +229,7 @@ input[type=submit]:hover {
 footer {
     padding: 1em;
     background-color: var(--palette-pink);
+    box-shadow: 0 0 32px -5px var(--palette-pink);
 }
 
 /* Media Queries */
