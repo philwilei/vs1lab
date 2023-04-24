@@ -110,9 +110,14 @@ function callback(location) {
 
 function updateLocation() {
     LocationHelper.findLocation(callback);
+    var lat = document.getElementById("tagging-lat").value;
+    var lon = document.getElementById("tagging-lon").value;
+    var mm = new MapManager("sc6jpukJS5sAEagIHrhiRZpJuWexIsEQ");
+    document.getElementById("mapView").src = mm.getMapUrl(lat, lon);
 }
 
 // Wait for the page to fully load its DOM content, then call updateLocation
 document.addEventListener("DOMContentLoaded", () => {
     updateLocation();
 });
+
