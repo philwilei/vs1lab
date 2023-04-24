@@ -10,6 +10,7 @@
 
 html {
   box-sizing: border-box;
+  background-color: var(--background-color);
 }
 
 * {
@@ -20,21 +21,25 @@ html {
   box-sizing: inherit;
 }
 
-
 /* Variables (example: see declaration for "a" below) */
-
 :root {
-  --link-color: #00B7FF;
-  --background-color: #efefef;
-  --border-color: #cdcdcd;
-  --gray-color: #666;
+    --primary: #000;
+    --link-color: #00B7FF;
+    --background-color: #FFF;
+    --border-color: #cdcdcd;
+    --gray-color: #666;
+    --palette-pink: #FFD6E0;
+    --palette-blue: #90F1EF;
+    --palette-yellow: #FFEF9F;
+    --palette-lime: #C1FBA4;
+    --palette-green: #BEE5BF;
+    --focus-green: #5BB985;
 }
 
-
 /* HTML element styles */
-
 body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  color: var(--primary);
   display: flex;
   flex-direction: column;
   min-height: 100vh;
@@ -44,13 +49,7 @@ a {
   color: var(--link-color);
 }
 
-/* ### TODO ### Styles for other HTML elements */
-
-/* ... your code here ... */
-
-
 /* Grid styles (no changes required) */
-
 .row {
   width: 100%;
   display: flex;
@@ -106,32 +105,140 @@ a {
   width: calc(100% - 1rem);
 }
 
+/* Styles for Header Component */
+header {
+    display: flex;
+    height: 5em;
+    background-color: var(--palette-pink);
+    padding: 1em;
+    box-shadow: 5px 5px 32px -5px var(--palette-pink);
+}
 
-/* ### TODO ### Styles for Header Component */
+header > * {
+    flex-basis: 10rem;
+}
 
-/* ... your code here ... */
+.header__image {
+    object-fit: scale-down;
+    object-position: left;
+}
 
+.header__title {
+    flex-grow: 1;
+    text-align: center;
+    margin: auto;
+}
 
-/* ### TODO ### Styles for Main Component */
+.header__navigation {
+    margin: auto;
+    font-size: 120%;
+}
 
-/* ... your code here ... */
+.header__navigation > a {
+    text-decoration: none;
+    color: var(--primary);
+}
 
+/* Styles for Main Component */
+main {
+    display: flex;
+    padding: 2em;
+    flex-grow: 1;
+}
 
-/* ### TODO ### Styles for Tagging component */
+section {
+    padding: 1em;
+}
 
-/* ... your code here ... */
+section > h2 {
+    padding-bottom: 0.5em;
+}
 
+/* Styles for Tagging component */
+fieldset {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    padding: 1em;
+    border-color: var(--palette-green);
+    border-style: solid;
+}
 
-/* ### TODO ### Styles for Discovery component */
+input {
+    padding: 5px;
+    margin: 5px 0 1em 0;
+    border: 2px solid var(--palette-green);
+    border-radius: 0;
+}
 
-/* ... your code here ... */
+input:focus-visible {
+    outline: none;
+    border-color: var(--focus-green);
+}
 
+input[disabled], input[readonly] {
+    color: var(--primary);
+    background-color: rgba(190, 229, 191, 0.3);
+}
 
-/* ### TODO ### Styles for Footer Component */
+input[type=submit] {
+    border: 2px solid var(--palette-green);
+    background-color: var(--palette-green);
+}
 
-/* ... your code here ... */
+input[type=submit]:hover {
+    cursor: pointer;
+    box-shadow: 5px 5px 15px -8px var(--palette-green);
+}
 
+/* Styles for Discovery component */
+.discovery {
+    flex-grow: 1;
+}
 
-/* ### TODO ### Media Queries */
+.discovery fieldset > * {
+    max-width: 300px;
+}
 
-/* ... your code here ... */
+.discovery__wrapper {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.discovery__wrapper > * {
+    margin-top: 1em;
+    margin-right: 1em;
+}
+
+.discovery__taglist li {
+    margin-bottom: 0.5em;
+    padding: 1em 0.5em;
+    border: 2px solid var(--palette-green);
+    box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+}
+
+.discovery__taglist li::marker {
+    content: "";
+}
+
+.discovery__map > span {
+    display: block;
+}
+
+/* Styles for Footer Component */
+footer {
+    padding: 1em;
+    background-color: var(--palette-pink);
+    box-shadow: 0 0 32px -5px var(--palette-pink);
+}
+
+/* Media Queries */
+@media (max-width: 750px) {
+    main {
+        display: block;
+    }
+
+    .discovery fieldset > * {
+        max-width: unset;
+    }
+}
