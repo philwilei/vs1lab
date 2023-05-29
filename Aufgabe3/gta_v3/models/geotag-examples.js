@@ -23,11 +23,12 @@ class GeoTagExamples {
             ['Building F', 49.015608, 8.390112, '#campus'],
             ['Building M', 49.016171, 8.390155, '#campus'],
             ['Building LI', 49.015636, 8.389318, '#campus'],
-            ['Auditorium He', 49.014915, 8.389264, '#campus'],
+            ['Auditorium he', 49.014915, 8.389264, '#campus'],
             ['Building R', 49.014992, 8.392365, '#campus'],
             ['Building A', 49.015738, 8.391619, '#campus'],
             ['Building B', 49.016843, 8.391372, '#campus'],
             ['Building K', 49.013190, 8.392090, '#campus'],
+            ['Home', 50.21610, 8.55308, '#house']
         ];
     }
 }
