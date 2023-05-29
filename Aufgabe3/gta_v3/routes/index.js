@@ -16,8 +16,6 @@ const router = express.Router();
 /**
  * The module "geotag" exports a class GeoTagStore. 
  * It represents geotags.
- * 
- * TODO: implement the module in the file "../models/geotag.js"
  */
 // eslint-disable-next-line no-unused-vars
 const GeoTag = require('../models/geotag');
@@ -25,11 +23,14 @@ const GeoTag = require('../models/geotag');
 /**
  * The module "geotag-store" exports a class GeoTagStore. 
  * It provides an in-memory store for geotag objects.
- * 
- * TODO: implement the module in the file "../models/geotag-store.js"
  */
 // eslint-disable-next-line no-unused-vars
 const GeoTagStore = require('../models/geotag-store');
+let database = new GeoTagStore();
+const exampleData = require('../models/geotag-examples');
+exampleData.tagList.forEach(geotag => {
+  database.addGeoTag(new GeoTag(geotag[1], geotag[2], geotag[0], geotag[3]))
+});
 
 /**
  * Route '/' for HTTP 'GET' requests.
@@ -39,10 +40,8 @@ const GeoTagStore = require('../models/geotag-store');
  *
  * As response, the ejs-template is rendered without geotag objects.
  */
-
-// TODO: extend the following route example if necessary
 router.get('/', (req, res) => {
-  res.render('index', { taglist: [] })
+  res.render('index', { taglist: database.getAllGeoTags() })
 });
 
 /**
@@ -59,8 +58,15 @@ router.get('/', (req, res) => {
  * To this end, "GeoTagStore" provides a method to search geotags 
  * by radius around a given location.
  */
-
-// TODO: ... your code here ...
+router.post('/tagging', (req, res) => {
+  database.addGeoTag(new GeoTag(req.body.latitude, req.body.longitude, req.body.name, req.body.hashtag));
+  res.render('index', {
+    taglist: database.getAllGeoTags(), 
+    query: req.body.query,
+    latitude: req.body.latitude,
+    longitude: req.body.longitude
+  });
+});
 
 /**
  * Route '/discovery' for HTTP 'POST' requests.
@@ -77,7 +83,24 @@ router.get('/', (req, res) => {
  * To this end, "GeoTagStore" provides methods to search geotags 
  * by radius and keyword.
  */
+router.post('/discovery', (req, res) => {
+  const searchRadius = 2000;
+  const latitude = parseFloat(req.body.latitude);
+  const longitude = parseFloat(req.body.longitude);
+  let taglist = [];
+ 
+  if (req.body.query) {
+    taglist = database.searchNearbyGeoTags(latitude, longitude, searchRadius, req.body.query);
+  } else {
+    taglist = database.getNearbyGeoTags(latitude, longitude, searchRadius);
+  }
 
-// TODO: ... your code here ...
+  res.render('index', {
+    taglist: taglist, 
+    query: req.body.query,
+    latitude: req.body.latitude,
+    longitude: req.body.longitude
+  });
+})
 
 module.exports = router;
