@@ -154,6 +154,22 @@ section > h2 {
     padding-bottom: 0.5em;
 }
 
+.message {
+  display: none;
+  margin: 2em 3em -1em 3em;   /* Don't question it! */
+  padding: 1em;
+}
+
+#errorMessage {
+  background-color: #fac3c3;
+  border: solid #f45678;
+}
+
+#successMessage {
+  background-color: var(--palette-lime);
+  border: solid var(--palette-green);
+}
+
 /* Styles for Tagging component */
 fieldset {
     display: flex;
