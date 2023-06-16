@@ -1,0 +1,205 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "GeoTagApp",
+    "dateExported": "2023-06-05T16:13:01.735Z",
+    "version": "1.1",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "72071416-a6c2-44e0-a6d5-be487587af9d",
+            "colId": "2147e08f-947c-444d-90e2-93b0892f9f53",
+            "containerId": "",
+            "name": "alle Geotags",
+            "url": "http://localhost:3000/api/geotags",
+            "method": "GET",
+            "sortNum": 10000,
+            "created": "2023-06-05T16:00:20.592Z",
+            "modified": "2023-06-05T16:00:31.980Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "d0b8da7b-2253-4aff-9852-3d8ba2135174",
+            "colId": "2147e08f-947c-444d-90e2-93b0892f9f53",
+            "containerId": "",
+            "name": "alle Geotags, mit Suchbegriff",
+            "url": "http://localhost:3000/api/geotags?searchTerm=edu",
+            "method": "GET",
+            "sortNum": 15000,
+            "created": "2023-06-05T16:04:41.267Z",
+            "modified": "2023-06-05T16:05:35.942Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": "searchTerm",
+                    "value": "edu",
+                    "isPath": false
+                }
+            ],
+            "tests": []
+        },
+        {
+            "_id": "5fd1c248-c207-490e-9f40-54275fc9d089",
+            "colId": "2147e08f-947c-444d-90e2-93b0892f9f53",
+            "containerId": "",
+            "name": "alle Geotags, mit Suchbegriff + Koordinaten",
+            "url": "http://localhost:3000/api/geotags?searchTerm=edu&latitude=49.0163498971946&longitude=8.390911128469323",
+            "method": "GET",
+            "sortNum": 17500,
+            "created": "2023-06-05T16:04:45.049Z",
+            "modified": "2023-06-05T16:05:54.680Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": "searchTerm",
+                    "value": "edu",
+                    "isPath": false
+                },
+                {
+                    "name": "latitude",
+                    "value": "49.0163498971946",
+                    "isPath": false
+                },
+                {
+                    "name": "longitude",
+                    "value": "8.390911128469323",
+                    "isPath": false
+                }
+            ],
+            "tests": []
+        },
+        {
+            "_id": "87fa295b-0540-4012-83fa-02f1e2c14df0",
+            "colId": "2147e08f-947c-444d-90e2-93b0892f9f53",
+            "containerId": "",
+            "name": "ein Geotag",
+            "url": "http://localhost:3000/api/geotags/1",
+            "method": "GET",
+            "sortNum": 20000,
+            "created": "2023-06-05T16:00:38.277Z",
+            "modified": "2023-06-05T16:03:24.194Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "f70a9086-c70b-460c-90b2-2b2e41b2356c",
+            "colId": "2147e08f-947c-444d-90e2-93b0892f9f53",
+            "containerId": "",
+            "name": "ein nicht vorhandener Geotag",
+            "url": "http://localhost:3000/api/geotags/11111",
+            "method": "GET",
+            "sortNum": 30000,
+            "created": "2023-06-05T16:00:58.419Z",
+            "modified": "2023-06-05T16:03:46.586Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "f28b9ed1-3354-4def-a691-20195c114100",
+            "colId": "2147e08f-947c-444d-90e2-93b0892f9f53",
+            "containerId": "",
+            "name": "Geotag erstellen (gültige Daten)",
+            "url": "http://localhost:3000/api/geotags",
+            "method": "POST",
+            "sortNum": 30000,
+            "created": "2023-06-05T16:06:49.010Z",
+            "modified": "2023-06-05T16:07:44.878Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"latitude\": 50.123456,\n  \"longitude\": 8.123456,\n  \"name\": \"New Geotag\",\n  \"hashtag\": \"#wow\"\n}\n",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "901ddf03-6e8c-4ca4-88c8-9ec163f797da",
+            "colId": "2147e08f-947c-444d-90e2-93b0892f9f53",
+            "containerId": "",
+            "name": "Geotag erstellen (ungültige Daten)",
+            "url": "http://localhost:3000/api/geotags",
+            "method": "POST",
+            "sortNum": 40000,
+            "created": "2023-06-05T16:06:52.049Z",
+            "modified": "2023-06-05T16:08:09.399Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"latitude\": 50.123456,\n  \"longitude\": 8.123456,\n  \"name\": \"New Geotag\"\n}\n",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "28362bcf-a78f-46db-8388-4a48b0f1a5b0",
+            "colId": "2147e08f-947c-444d-90e2-93b0892f9f53",
+            "containerId": "",
+            "name": "Geotag aktualisieren (gültige Daten)",
+            "url": "http://localhost:3000/api/geotags/1",
+            "method": "PUT",
+            "sortNum": 40000,
+            "created": "2023-06-05T16:08:31.094Z",
+            "modified": "2023-06-05T16:10:33.685Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"latitude\": 50.123456,\n  \"longitude\": 8.123456,\n  \"name\": \"Updated Geotag\",\n  \"hashtag\": \"#updated\"\n}\n",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "a4cef0a4-ab2b-4688-9891-fec4cedc6599",
+            "colId": "2147e08f-947c-444d-90e2-93b0892f9f53",
+            "containerId": "",
+            "name": "Geotag aktualisieren (ungültige Daten)",
+            "url": "http://localhost:3000/api/geotags/1",
+            "method": "PUT",
+            "sortNum": 50000,
+            "created": "2023-06-05T16:10:43.006Z",
+            "modified": "2023-06-05T16:11:02.452Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"latitude\": 50.123456,\n  \"longitude\": 8.123456,\n  \"name\": \"Updated Geotag\"\n}\n",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "40abfc38-fd4f-41b4-a666-00e126a1a27c",
+            "colId": "2147e08f-947c-444d-90e2-93b0892f9f53",
+            "containerId": "",
+            "name": "Geotag löschen",
+            "url": "http://localhost:3000/api/geotags/1",
+            "method": "DELETE",
+            "sortNum": 50000,
+            "created": "2023-06-05T16:11:19.068Z",
+            "modified": "2023-06-05T16:11:44.511Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "f93f2e57-f9fb-457c-95af-927bae3e9edd",
+            "colId": "2147e08f-947c-444d-90e2-93b0892f9f53",
+            "containerId": "",
+            "name": "nicht vorhandenen Geotag löschen",
+            "url": "http://localhost:3000/api/geotags/111111111",
+            "method": "DELETE",
+            "sortNum": 60000,
+            "created": "2023-06-05T16:11:49.892Z",
+            "modified": "2023-06-05T16:12:09.189Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        }
+    ]
+}
