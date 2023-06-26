@@ -170,6 +170,28 @@ section > h2 {
   border: solid var(--palette-green);
 }
 
+.paginationContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2em;
+}
+
+.paginationButton {
+  padding: 5px;
+  border: 2px solid var(--palette-green);
+  background-color: var(--palette-green);
+}
+
+.paginationButton:hover {
+  cursor: pointer;
+  box-shadow: 5px 5px 15px -8px var(--palette-green);
+}
+
+.paginationButton[disabled] {
+  cursor: default;
+}
+
 /* Styles for Tagging component */
 fieldset {
     display: flex;

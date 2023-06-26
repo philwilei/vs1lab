@@ -63,7 +63,7 @@ router.get('/', (req, res) => {
 
 router.get('/api/geotags', (req, res) => {
   const searchRadius = 5000;
-  let geotags = [];
+  var geotags = [];
   if (req.query.latitude && req.query.longitude)
     if (req.query.searchTerm)
       geotags = database.searchNearbyGeoTags(parseFloat(req.query.latitude), parseFloat(req.query.longitude), searchRadius, req.query.searchTerm);
@@ -71,6 +71,12 @@ router.get('/api/geotags', (req, res) => {
       geotags = database.getNearbyGeoTags(parseFloat(req.query.latitude), parseFloat(req.query.longitude), searchRadius);
   else
     geotags = database.getAllGeoTags();
+
+  if (req.query.start)
+    if (req.query.limit)
+      geotags = geotags.slice(req.query.start, parseInt(req.query.start) + parseInt(req.query.limit));
+    else
+      geotags = geotags.slice(req.query.start);
 
   res.json(geotags);
 });
